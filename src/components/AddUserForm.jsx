@@ -4,6 +4,7 @@ import api from '../services/api';
 const AddUserForm = ({ onUserAdded }) => {
     const [nombres, setNombres] = useState('');
     const [apellidos, setApellidos] = useState('');
+    const [identificacion, setIdentificacion] = useState('');
     const [email, setEmail] = useState('');
     const [rolId, setRolId] = useState('');
     const [roles, setRoles] = useState([]);
@@ -26,7 +27,7 @@ const AddUserForm = ({ onUserAdded }) => {
     const handleSubmit = async (e) => {
         e.preventDefault();
 
-        if (!nombres || !apellidos || !email || !rolId) {
+        if (!nombres || !apellidos || !identificacion || !email || !rolId) {
             setError('Todos los campos son obligatorios.');
             setMensaje('');
             return;
@@ -36,6 +37,7 @@ const AddUserForm = ({ onUserAdded }) => {
             await api.post('/users', {
                 nombres,
                 apellidos,
+                identificacion,
                 email,
                 rolId,
             });
@@ -44,6 +46,7 @@ const AddUserForm = ({ onUserAdded }) => {
             setError('');
             setNombres('');
             setApellidos('');
+            setIdentificacion('');
             setEmail('');
             setRolId('');
             if (typeof onUserAdded === 'function') onUserAdded();
@@ -72,6 +75,13 @@ const AddUserForm = ({ onUserAdded }) => {
                 value={apellidos}
                 onChange={(e) => setApellidos(e.target.value)}
                 placeholder="Apellidos"
+                className="w-full border px-3 py-2 rounded"
+            />
+            <input
+                type="text"
+                value={identificacion}
+                onChange={(e) => setIdentificacion(e.target.value)}
+                placeholder="Identificación"
                 className="w-full border px-3 py-2 rounded"
             />
             <input
