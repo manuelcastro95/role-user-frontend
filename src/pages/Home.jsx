@@ -1,24 +1,8 @@
-import AddRoleForm from '../components/AddRoleForm';
-import AddUserForm from '../components/AddUserForm';
-import RoleList from '../components/RoleList';
-import UserList from '../components/UserList';
-
 const Home = () => {
     return (
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
-            <div>
-                <h2 className="font-semibold">Agregar Rol</h2>
-                <AddRoleForm />
-            </div>
-            <div>
-                <h2 className="font-semibold">Agregar Usuario</h2>
-                <AddUserForm />
-            </div>
-            <div>
-                <h2 className="font-semibold">Vista General</h2>
-                <RoleList />
-                <UserList />
-            </div>
+        <div className="flex flex-col items-center justify-center min-h-[300px]">
+            <h1 className="text-3xl font-bold text-gray-900 mb-4">Bienvenido a la Gestión de Usuarios y Roles</h1>
+            <p className="text-gray-700 text-lg text-center max-w-xl">Utiliza el menú superior para gestionar usuarios y roles en el sistema.</p>
         </div>
     );
 }

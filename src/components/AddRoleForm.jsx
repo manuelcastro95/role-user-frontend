@@ -1,7 +1,7 @@
 import { useState } from 'react';
 import api from '../services/api';
 
-const AddRoleForm = () => {
+const AddRoleForm = ({ onRoleAdded }) => {
   const [nombre, setNombre] = useState('');
   const [descripcion, setDescripcion] = useState('');
   const [mensaje, setMensaje] = useState('');
@@ -22,10 +22,13 @@ const AddRoleForm = () => {
         descripcion,
       });
 
+      
+
       setMensaje('Rol agregado exitosamente.');
       setError('');
       setNombre('');
       setDescripcion('');
+      if (typeof onRoleAdded === 'function') onRoleAdded();
     } catch (err) {
       console.error(err);
       setError('Hubo un error al agregar el rol.');

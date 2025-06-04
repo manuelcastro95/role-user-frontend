@@ -1,22 +1,6 @@
-import { useEffect, useState } from 'react';
-import api from '../services/api';
+import React from 'react';
 
-const UserList = () => {
-    const [usuarios, setUsuarios] = useState([]);
-
-    useEffect(() => {
-        const fetchUsuarios = async () => {
-            try {
-                const response = await api.get('/users');
-                setUsuarios(response.data);
-            } catch (err) {
-                console.error('Error al cargar los usuarios:', err);
-            }
-        };
-
-        fetchUsuarios();
-    }, []);
-
+const UserList = ({ usuarios = [] }) => {
     return (
         <div className="mt-4">
             <h3 className="font-bold mb-2">Usuarios registrados</h3>

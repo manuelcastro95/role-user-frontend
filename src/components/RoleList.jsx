@@ -1,22 +1,6 @@
-import { useEffect, useState } from 'react';
-import api from '../services/api';
+import React from 'react';
 
-const RoleList = () => {
-    const [roles, setRoles] = useState([]);
-
-    useEffect(() => {
-        const fetchRoles = async () => {
-            try {
-                const response = await api.get('/roles');
-                setRoles(response.data);
-            } catch (err) {
-                console.error('Error al cargar los roles:', err);
-            }
-        };
-
-        fetchRoles();
-    }, []);
-
+const RoleList = ({ roles = [] }) => {
     return (
         <div className="mt-4">
             <h3 className="font-bold mb-2">Roles registrados</h3>
